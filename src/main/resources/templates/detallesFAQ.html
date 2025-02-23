@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Pregunta</title>
+    <link rel="stylesheet" href="/styles/detallesFAQ.css">
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="link-bar">
+        <a th:href="@{/user}">Inicio</a>
+    </div>
+    <form method="get" th:action="@{/logout}">
+        <div class="bottom-content" onclick="this.parentNode.submit();">
+            <span class="text nav-text">Cerrar Sesión</span>
+        </div>
+    </form>
+</div>
+
+<div class="contenedor">
+    <h1>Detalles de la Pregunta</h1>
+    <div>
+        <p><strong>Pregunta:</strong> <span th:text="${faq.pregunta}"></span></p>
+        <p><strong>Respuesta:</strong> <span th:text="${faq.respuesta}"></span></p>
+        <p><strong>Estado de Revisión:</strong> <span th:text="${faq.revision} ? 'Revisado' : 'Pendiente'"></span></p>
+        <p><strong>Responde:</strong> <span th:text="${faq.responde}"></span></p>
+    </div>
+    <a th:href="@{/user/FAQ}" class="btn btn-primary">Volver</a>
+</div>
+
+</body>
+</html>

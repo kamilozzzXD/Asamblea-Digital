@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje de Votación Finalizada</title>
+    <link rel="stylesheet" href="/styles/mensajeVotacionFinalizada.css">
+
+</head>
+<body>
+<h2>Votación Finalizada</h2>
+<p th:text="${mensaje}"></p>
+<a th:href="@{'/user/asamblea/detalles/'+${idAsamblea} }" >Asamblea</a>
+</body>
+</html>

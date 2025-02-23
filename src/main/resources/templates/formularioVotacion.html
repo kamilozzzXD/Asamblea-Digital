@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/styles/formularioVotacion.css">
+    <script src="/scripts/formularioVotacion.js"></script>
+</head>
+<body>
+
+<h2>Crear Votación</h2>
+
+<form th:action="@{/admin/asamblea/votacion/crear/new}" method="post" id="formularioVotacion" onsubmit="actualizarContadorOpciones()">
+    <input type="hidden" id="idAsamblea" name="idAsamblea" th:value="${votacion.idAsamblea}">
+    <input type="hidden" id="estado" name="estado" th:value="${votacion.getEstado()}">
+
+    <div id="preguntasDiv">
+        <button type="button" onclick="agregarPregunta()">Agregar Pregunta</button>
+    </div>
+
+    <input type="submit" value="Crear Votación">
+    <a th:href="@{'/admin/asamblea/detalles/' + ${idAsamblea}}" class="btn btn-primary btn-cancelar">Cancelar</a>
+</form>
+
+
+
+</body>
+</html>
+
+

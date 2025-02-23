@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/listarActas.css">
+    <title>Lista de Actas</title>
+</head>
+<body>
+<div class="container">
+    <h1>Acta</h1>
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+        <tr th:each="acta : ${actas}">
+            <td>
+                <a th:href="@{/admin/acta/pdf/{filename}(filename=${acta.acta})}" target="_blank" th:text="${acta.acta}">Ver PDF</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas</title>
+    <link rel="stylesheet" href="/styles/FAQsAdmin.css">
+</head>
+<body>
+<div class="top-bar">
+    <div class="link-bar">
+        <a th:href="@{/admin}">Inicio</a>
+    </div>
+    <form method="get" th:action="@{/logout}">
+        <div class="bottom-content" onclick="this.parentNode.submit();">
+            <span class="text nav-text">Cerrar Sesión</span>
+        </div>
+    </form>
+</div>
+<br>
+<div th:if="${successMessage}">
+    <p th:text="${successMessage}" style="color: green;"></p>
+</div>
+
+<h1>Preguntas</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nombre de Usuario</th> <!-- Nueva columna para el nombre de usuario -->
+        <th>Pregunta</th>
+        <th>Revisión</th>
+        <th>Respuesta</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="faq, index : ${faqs}">
+        <td th:text="${nombresUsuarios[__${index.index}__]}"></td>
+        <td th:text="${faq.pregunta}"></td>
+        <td th:text="${faq.revision} ? 'Revisado' : 'Pendiente'"></td>
+        <td th:if="${faq.revision}">
+            <span th:text="${faq.respuesta}"></span>
+        </td>
+        <td th:unless="${faq.revision}">
+            <a th:href="@{/admin/FAQ/responder/{id}(id=${faq.id})}">Responder</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

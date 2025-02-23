@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas</title>
+    <link rel="stylesheet" href="/styles/FAQs.css">
+</head>
+<body>
+<div class="top-bar">
+    <div class="link-bar">
+        <a th:href="@{/user}">Inicio</a>
+    </div>
+    <form method="get" th:action="@{/logout}">
+        <div class="bottom-content" onclick="this.parentNode.submit();">
+            <span class="text nav-text">Cerrar Sesión</span>
+        </div>
+    </form>
+</div>
+<br>
+<div th:if="${successMessage}">
+    <p th:text="${successMessage}" style="color: green;"></p>
+</div>
+<h1>Preguntas</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Pregunta</th>
+        <th>Revisión</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="faq : ${faqs}">
+        <td th:text="${faq.pregunta}"></td>
+        <td th:text="${faq.revision} ? 'Revisado' : 'Pendiente'"></td>
+        <td>
+            <a th:href="@{/user/FAQ/detalles/{id}(id=${faq.id})}">Detalles</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/user/FAQ/crear}" class="btn btn-primary">Nueva Pregunta</a>
+</body>
+</html>

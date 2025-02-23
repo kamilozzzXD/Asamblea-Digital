@@ -1,0 +1,79 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+h1 {
+    color: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0px;
+}
+.top-bar{
+    background-color: rgb(43, 46, 59);
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+form{
+    background: rgb(230, 227, 233);
+    text-align: center;
+    width:80%;
+    height: auto;
+    border: 3px solid rgb(182, 190, 216);
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    right: 50%;
+    animation: mostrarFormulario 1s cubic-bezier(0.68, -0.55, 0.27, 1.5) forwards;
+}
+@keyframes mostrarFormulario {
+    0%{
+        transform: translate(50%, -500px);
+    }
+    50%{
+        transform: translate(50%, 45px);
+    }
+    100% {
+        transform: translate(50%, 40px);
+    }
+}
+input[type="submit"],
+button[type="button"] {
+    background: rgb(43, 46, 59);
+    color: aliceblue;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+input[type="submit"]:hover,
+button[type="button"]:hover {
+    background-color: #0c1825cc;
+}
+.btn-cancelar {
+    display: inline-block;
+    background: rgb(43, 46, 59);
+    color: aliceblue;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px; /* Ajusta el tamaño de la fuente según tus preferencias */
+}
+
+.btn-cancelar:hover {
+    background-color: #0c1825cc;
+}

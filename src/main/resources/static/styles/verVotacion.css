@@ -1,0 +1,103 @@
+h2 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+table {
+    margin-top: 20px;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+td {
+    padding: 12px 8px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para el botón de terminar votación */
+input[type="submit"] {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #c82333;
+}
+
+/* Estilos para el enlace "Asamblea" */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para la segunda tabla de reporte */
+h2:nth-of-type(2) {
+    margin-top: 50px;
+}
+
+table:nth-of-type(2) {
+    width: 70%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table:nth-of-type(2) th,
+table:nth-of-type(2) td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+table:nth-of-type(2) th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+table:nth-of-type(2) tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}

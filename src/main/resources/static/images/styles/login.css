@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(236, 234, 238);
+    background-image: url(/images/login.jpeg);
+    background-size: cover; /* La imagen cubrirá todo el contenedor */
+    background-position: center;
+    backdrop-filter: blur(5px);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    animation: mostrarFormulario 1s cubic-bezier(0.68, -0.55, 0.27, 1.5) forwards;
+}
+@keyframes mostrarFormulario {
+    0%{
+        transform: translate(0%,-500px);
+    }
+    50%{
+        transform: translate(0%,20px);
+    }
+    100% {
+        transform: translate(0%);
+    }
+}
+.form-box {
+    background-color: rgb(224, 224, 241);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid rgb(182, 190, 216);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 50%;
+    width: auto;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-field input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+}
+
+.input-field i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.btn-field button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    background-color: rgb(95, 66, 173);
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-field button:hover {
+    background-color: rgba(95, 66, 173, 0.877);
+}
+label{
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.719);
+}

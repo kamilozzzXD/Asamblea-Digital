@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Asamblea</title>
+    <link rel="stylesheet" href="/styles/detallesAsamblea.css">
+    <script src="/scripts/detallesAsamblea.js"></script>
+</head>
+<body>
+
+<a th:href="@{/admin/asambleas}" class="btn btn-primary">Asambleas</a>
+
+<h2>Detalles de la Asamblea</h2>
+
+<ul>
+    <li>Fecha: <span th:text="${asamblea.fecha}"></span></li>
+    <li>Hora: <span th:text="${asamblea.hora}"></span></li>
+    <li>Lugar: <span th:text="${asamblea.lugar}"></span></li>
+    <li>Codigo: <span th:text="${asamblea.codigo}"></span></li>
+    <li>Estado:
+        <span id="estado" th:text="${asamblea.estado}"></span>
+        <div th:if="${asamblea.estado == 'Programada'}">
+            <form th:if="${asamblea.codigo == null}" th:action="@{'/admin/asambleas/estado/' + ${asamblea.id}}" method="post" onsubmit="event.preventDefault(); actualizarEstado();">
+                <select name="estado" onchange="this.form.submit()">
+                    <option value="Programada" th:selected="${asamblea.estado == 'Programada'}">Programada</option>
+                    <option value="Cancelada" th:selected="${asamblea.estado == 'Cancelada'}">Cancelada</option>
+                </select>
+            </form>
+        </div>
+    </li>
+
+    <li>Temas:</li>
+    <ul>
+        <li th:each="tema : ${#strings.arraySplit(tema.temaDiscusion, ',')}" th:text="${tema}"></li>
+    </ul>
+</ul>
+
+<div th:if="${asamblea.codigo == null && asamblea.estado != 'Cancelada'}">
+    <form th:action="@{'/admin/asamblea/generarCodigo/' + ${asamblea.id}}" method="post">
+        <input type="submit" class="btn btn-warning" value="Generar Código de Acceso"/>
+    </form>
+</div>
+
+<div th:unless="${asamblea.estado =='Cancelada' || asamblea.codigo == null}">
+    <div style="display: inline-block; margin-right: 20px;">
+        Miembros de la Asamblea
+        <ul th:text="${totalMiembros}" style="text-align: center;"></ul>
+    </div>
+    <div style="display: inline-block;">
+        Miembros Presentes
+        <ul th:text="${totalAsistentes}" style="text-align: center;"></ul>
+    </div>
+</div>
+
+<a th:if="${asamblea.estado == 'Iniciada'}" th:href="@{'/admin/asamblea/votacion/crear?idAsamblea=' + ${asamblea.id}}" class="btn btn-primary">Crear Votación</a>
+
+<div th:unless="${asamblea.estado =='Programada' || asamblea.estado =='Cancelada' || (votaciones != null && votaciones.isEmpty())}">
+    <ul>
+        <li>Votaciones:</li>
+        <li th:each="votacion, iter : ${votaciones}">
+            <a th:href="@{/admin/asamblea/votacion/ver/{idVotacion}(idVotacion=${votacion.getIdVotacion()})}" th:text="'Votación ' + ${iter.count}"></a>
+        </li>
+    </ul>
+</div>
+<!-- Condición para mostrar el botón "Asistencia"
+<div th:if="${asamblea.estado == 'Programada' || asamblea.estado == 'Iniciada'}">
+    <a th:href="@{'/admin/asambleas/asistencia/' + ${asamblea.id}}" class="btn btn-info">Asistencia</a>
+</div>-->
+<div th:if="${asamblea.estado == 'Programada' && asamblea.codigo != null}">
+    <form th:action="@{'/admin/asamblea/comenzar/' + ${asamblea.id}}" method="post">
+        <input type="submit" class="btn btn-success" value="Iniciar Asamblea"/>
+    </form>
+</div>
+
+<div th:if="${asamblea.estado != 'Programada' || asamblea.estado != 'Cancelada'}">
+    <a th:href="@{'/admin/asambleas/asistentes/' + ${asamblea.id} + '?format=pdf'}" class="btn btn-info">Asistencia</a>
+</div>
+
+<div th:if="${asamblea.estado == 'Iniciada'}">
+    <form th:action="@{'/admin/asambleas/estado/' + ${asamblea.id}}" method="post">
+        <input type="hidden" name="estado" value="Finalizada"/>
+        <input type="submit" class="btn btn-danger" value="Finalizar Asamblea"/>
+    </form>
+    <a th:href="@{'/admin/asamblea/acta/' + ${asamblea.id}}" class="btn btn-info">Acta</a>
+</div>
+
+<div th:if="${ asamblea.estado == 'Finalizada'}">
+    <h2>Acta</h2>
+    <table>
+        <tbody>
+        <tr th:each="acta : ${actas}">
+            <td>
+                <a th:href="@{/admin/acta/pdf/{filename}(filename=${acta.acta})}" target="_blank" th:text="${acta.acta}">Ver PDF</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<p th:if="${mensajeError}" class="text-danger" th:text="${mensajeError}"></p>
+
+<p th:if="${mensajeConfirmacion}" class="text-success" th:text="${mensajeConfirmacion}"></p>
+
+
+</body>
+</html>

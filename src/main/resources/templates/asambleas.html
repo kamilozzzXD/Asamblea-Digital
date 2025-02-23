@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Asambleas</title>
+    <link rel="stylesheet" href="/styles/asambleas.css">
+</head>
+<body>
+<div class="top-bar">
+    <div class="link-bar">
+        <a th:href="@{/admin}">Inicio</a>
+    </div>
+    <form method="get" th:action="@{/logout}">
+        <div class="bottom-content" onclick="this.parentNode.submit();">
+            <span class="text nav-text">Cerrar Sesión</span>
+        </div>
+    </form>
+</div>
+<br>
+<h2>Asambleas</h2>
+<a th:href="@{/admin/asambleas/new}" class="btn btn-primary" style="margin-left: -912px;">Nueva Asamblea</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Lugar</th>
+        <th>Estado</th>
+        <th>Detalles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="asamblea : ${asambleas}">
+        <td th:text="${asamblea.fecha}"></td>
+        <td th:text="${asamblea.hora}"></td>
+        <td th:text="${asamblea.lugar}"></td>
+        <td th:text="${asamblea.estado}"></td>
+        <td><a th:href="@{'/admin/asamblea/detalles/' + ${asamblea.id}}" class="btn btn-info">Detalles</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

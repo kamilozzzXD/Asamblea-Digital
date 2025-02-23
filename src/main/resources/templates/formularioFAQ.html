@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear FAQ</title>
+    <link rel="stylesheet" href="/styles/formularioFAQ.css">
+</head>
+<body>
+<div class="container">
+    <h1>Preguntas y Comentarios</h1>
+    <form th:action="@{/user/FAQ/new}" method="POST" th:object="${faq}">
+        <label for="pregunta"></label>
+        <textarea id="pregunta" name="pregunta" th:field="*{pregunta}" rows="5" required></textarea><br><br>
+
+        <input type="submit" value="Guardar">
+
+        <a href="/user/FAQ" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

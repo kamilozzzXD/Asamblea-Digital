@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Acta</title>
+    <link rel="stylesheet" href="/styles/acta.css">
+</head>
+<body>
+<div class="container">
+    <h1>Agregar Acta</h1>
+    <span>*Cargar en formato PDF</span>
+    <form th:action="@{/admin/asamblea/acta/guardar}" method="POST" th:object="${acta}" enctype="multipart/form-data">
+        <input type="hidden" name="idAsamblea" th:value="${idAsamblea}" />
+        <div>
+            <input type="file" name="file" accept=".pdf" class="form-control" />
+        </div>
+        <input type="submit" value="Guardar">
+        <a th:href="@{'/admin/asamblea/detalles/' + ${idAsamblea}}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

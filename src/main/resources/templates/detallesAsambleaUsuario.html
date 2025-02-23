@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Asamblea</title>
+    <link rel="stylesheet" href="/styles/detallesAsambleaUsuario.css">
+</head>
+<body>
+<a th:href="@{/user/asambleas}" class="btn btn-primary">Asambleas</a>
+<h2>Detalles de la Asamblea</h2>
+<ul>
+    <li>Fecha: <span th:text="${asamblea.fecha}"></span></li>
+    <li>Hora: <span th:text="${asamblea.hora}"></span></li>
+    <li>Lugar: <span th:text="${asamblea.lugar}"></span></li>
+    <li>Estado: <span th:text="${asamblea.estado}"></span></li>
+    <!-- Mostrar detalles del tema -->
+    <li>Temas:</li>
+    <ul>
+        <li th:each="tema : ${#strings.arraySplit(tema.temaDiscusion, ',')}" th:text="${tema}"></li>
+    </ul>
+    <div th:if="${asistio == true && !votaciones.isEmpty()}">
+        <li>Votaciones:</li>
+        <ul>
+            <li th:each="votacion, iter : ${votaciones}">
+                <a th:href="@{/user/asamblea/votacion/{idVotacion}(idVotacion=${votacion.idVotacion})}" th:text="'Votación ' + ${iter.count}"></a>
+            </li>
+        </ul>
+    </div>
+</ul>
+
+<div th:if="${asamblea.estado != 'Finalizada' && asistio!=true}">
+    <form th:action="@{/user/asambleas/asistencia/{id}(id=${asamblea.id})}" method="post">
+        <label for="codigo">Ingrese el código de acceso:</label>
+        <input type="text" id="codigo" name="codigo" required>
+        <button type="submit">Registrar Asistencia</button>
+    </form>
+</div>
+
+<div th:if="${asamblea.estado == 'Finalizada' && !actas.isEmpty()}">
+    <h1>Acta</h1>
+    <table>
+        <thead></thead>
+        <tbody>
+        <tr th:each="acta : ${actas}">
+            <td>
+                <a th:href="@{/user/acta/pdf/{filename}(filename=${acta.acta})}" target="_blank" th:text="${acta.acta}">Ver PDF</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${mensaje != null}">
+    <p th:text="${mensaje}"></p>
+</div>
+
+</body>
+</html>

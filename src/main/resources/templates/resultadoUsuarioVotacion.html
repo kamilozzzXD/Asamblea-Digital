@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/styles/resultadoUsuarioVotacion.css">
+
+</head>
+<body>
+
+<h2>Votacion Realizada</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Pregunta</th>
+        <th>Opción seleccionada</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="resultado : ${resultados}">
+        <td th:text="${serviceVotacion.obtenerPreguntaPorOpcionId(resultado.getOpcionId())}"></td>
+        <td th:text="${serviceVotacion.obtenerOpcionPorId(resultado.getOpcionId())}"></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{'/user/asamblea/detalles/'+${votacion.getIdAsamblea()} }" >Asamblea</a>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/styles/verVotacion.css">
+    <script src="/scripts/verVotacion.js"></script>
+</head>
+<body>
+<a th:href="@{'/admin/asamblea/detalles/'+${votacion.getIdAsamblea()} }" >Asamblea</a>
+<h2>Votación</h2>
+<h3>Estado:<span th:text="${votacion.getEstado()}"></span></h3>
+<table>
+    <thead>
+    <tr>
+        <th>Pregunta</th>
+        <th>Tipo de Opción</th>
+        <th>Opciones</th>
+        <th>Resultados</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="opcion : ${opcionesVoto}">
+        <td th:text="${opcion.pregunta}"></td>
+        <td th:text="${opcion.tipoOpcion}"></td>
+        <td>
+            <ul th:each="opcionItem : ${opcion.opciones}">
+                <span class="opcion" th:text="${opcionItem.opcion}" th:attr="data-valor=${resultadoHelper.obtenerResultado(opcionItem.id)}"></span>
+            </ul>
+        </td>
+        <td>
+            <ul th:each="opcionItem : ${opcion.opciones}">
+                <span th:text="${resultadoHelper.obtenerResultado(opcionItem.id)}"></span>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div th:if="${votacion.getEstado()== 'Comenzada'}">
+    <form th:action="@{'/admin/asamblea/votacion/ver/terminar/' + ${votacion.idVotacion}}" method="post">
+        <input type="submit" value="Terminar Votación">
+    </form>
+</div>
+
+<!-- Nueva tabla para mostrar las opciones ganadoras -->
+<h2 th:if="${votacion.getEstado() == 'Terminada'}">Reporte de los resultados</h2>
+<table th:if="${votacion.getEstado() == 'Terminada'}">
+    <thead>
+    <tr>
+        <th>Pregunta</th>
+        <th>Opciones Ganadoras</th>
+        <th>Porcentaje de aprobacion</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Asamblea</title>
+    <link rel="stylesheet" href="/styles/formularioAsamblea.css">
+    <script src="/scripts/formularioAsamblea.js"></script>
+</head>
+<body>
+<h1>Nueva Asamblea</h1>
+<form action="#" th:action="@{/admin/asambleas/crear}" th:object="${asamblea}" method="post" autocomplete="off">
+    <h2>Programar una Asamblea</h2>
+    <p>Ingrese la fecha, la hora, el lugar, el estado y el tema a tratar en la proxima asamblea</p>
+    <div class = "FH">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+        <span th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}" class="error"></span>
+    </div>
+    <div class = "FH">
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" name="hora" required>
+        <span th:if="${#fields.hasErrors('hora')}" th:errors="*{hora}" class="error"></span>
+    </div>
+    <div class = "FH">
+        <label for="lugar">Lugar:</label>
+        <input type="text" id="lugar" name="lugar" required>
+        <span th:if="${#fields.hasErrors('lugar')}" th:errors="*{lugar}" class="error"></span>
+    </div>
+    <div class = "FH">
+        <input type="hidden" id="estado" name="estado" th:value="${asamblea.estado != null ? asamblea.estado : 'Programada'}" />
+    </div>
+
+    <div id="temas" class = "FH">
+        <label for="descripcionTema">Tema a tratar:</label>
+        <textarea id="descripcionTema" name="descripcionTema" required></textarea>
+        <button type="button" onclick="agregarTema()">Agregar tema</button>
+    </div>
+
+    <button type="submit">Guardar Asamblea</button>
+    <a href="/admin/asambleas" class="btn btn-primary btn-cancelar">Cancelar</a>
+</form>
+
+</body>
+</html>

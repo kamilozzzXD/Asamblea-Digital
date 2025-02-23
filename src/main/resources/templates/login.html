@@ -1,0 +1,42 @@
+<!doctype html>
+<html xml:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="Camilo Herrera" content="">
+    <title>Asamblea Digital</title>
+    <link rel="stylesheet" href="/images/styles/login.css">
+
+</head>
+
+<body>
+<div class="container">
+    <div class="form-box">
+        <form method="POST" th:action="@{/login-post}">
+            <div class="input-group">
+                <div class="input-field">
+                    <h2>Inicio de Sesión</h2>
+                    <p>Inicie sesión con su nombre y contraseña</p>
+                    <i class="fa-solid fa-user"></i>
+                    <label for="username">Usuario:</label>
+                    <input type="text" name="username"
+                           id="username" placeholder="Nombre de usuario"
+                           required minlength="8" maxlength="12">
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-lock"></i>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                </div>
+            </div>
+            <div class="btn-field">
+                <button type="submit">Iniciar Sesión</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

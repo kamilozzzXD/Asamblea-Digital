@@ -1,0 +1,47 @@
+body{
+    margin: 0 auto;
+    position: relative;
+    font-family: 'Arial', sans-serif;
+    background: rgb(241, 239, 243);
+}
+form{
+    background: rgb(230, 227, 233);
+    text-align:start;
+    width:80%;
+    height: auto;
+    border: 3px solid rgb(182, 190, 216);
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    right: 50%;
+    animation: mostrarFormulario 1s cubic-bezier(0.68, -0.55, 0.27, 1.5) forwards;
+}
+@keyframes mostrarFormulario {
+    0%{
+        transform: translate(50%, -500px);
+    }
+    50%{
+        transform: translate(50%, 45px);
+    }
+    100% {
+        transform: translate(50%, 10%);
+    }
+}
+h2{
+    border-bottom: 2px solid rgb(105, 111, 133);
+    padding: 20px 20px 0px 20px;
+}
+input[type="submit"],
+.btn {
+    background: rgb(43, 46, 59);
+    color: aliceblue;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+input[type="submit"]:hover,
+.btn :hover {
+    background-color: #0c1825cc;
+}

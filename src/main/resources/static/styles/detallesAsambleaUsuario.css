@@ -1,0 +1,141 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+h2 {
+    font-size: 28px;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+ul {
+    list-style-type: none;
+    padding: 15px;
+    margin: 0 auto;
+    text-align: left;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    max-width: 600px;
+}
+li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+}
+li:last-child {
+    border-bottom: none;
+}
+li span {
+    font-weight: bold;
+    color: #007bff;
+}
+/* Estilos para los temas */
+ul li ul {
+    list-style-type: none;
+    margin-top: 10px;
+    margin-left: 30px;
+    padding-left: 10px;
+    border-left: 2px solid #007bff;
+}
+ul li ul li {
+    border-bottom: none;
+    padding: 8px 0;
+    margin-left: 0;
+    font-size: 16px;
+}
+
+/* Reglas de medios para dispositivos móviles */
+@media only screen and (max-width: 1100px) {
+    body {
+        margin-top: 80px;
+    }
+    h2 {
+        margin-top: 20px;
+    }
+    ul {
+        max-width: 90%;
+    }
+    li {
+        font-size: 16px;
+    }
+    ul li ul {
+        margin-left: 20px;
+    }
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+form input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+p {
+    margin-top: 10px;
+    color: #dc3545;
+    font-size: 16px;
+}
+ul li a {
+    display: block;
+    padding: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}

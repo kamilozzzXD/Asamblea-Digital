@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 80px;
+}
+.top-bar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1000;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.welcome-message {
+    margin-top: 50px;
+}
+.assembly-images {
+    margin-top: 50px;
+}
+.assembly-image {
+    margin-bottom: 20px;
+}
+.assembly-image img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.image-caption {
+    color: #333;
+    max-width: 30%;
+    margin: 0 auto;
+}
+
+/* Reglas de medios para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    body {
+        margin-top: 120px;
+    }
+    .welcome-message {
+        margin-top: 20px;
+    }
+}

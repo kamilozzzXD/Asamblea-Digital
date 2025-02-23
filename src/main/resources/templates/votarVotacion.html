@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/styles/votarVotacion.css">
+</head>
+<body>
+
+<h2>Votar en la Asamblea</h2>
+
+<form th:action="@{/user/asamblea/votacion/{id}/submit(id=${votacion.idVotacion})}" method="post">
+    <div th:each="opcion : ${opcionesVoto}">
+        <h4 th:text="${opcion.pregunta}"></h4>
+        <input type="hidden" th:name="preguntaId" th:value="${opcion.idOpcionVoto}"/>
+
+        <div th:switch="${opcion.tipoOpcion}">
+            <div th:case="'Opcion única'">
+                <ul>
+                    <li th:each="opcionItem : ${opcion.opciones}">
+                        <input type="radio" th:name="'opcion_' + ${opcion.idOpcionVoto}" th:value="${opcionItem.id}"/>
+                        <span th:text="${opcionItem.opcion}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div th:case="'Opción múltiple'">
+                <ul>
+                    <li th:each="opcionItem : ${opcion.opciones}">
+                        <input type="checkbox" th:name="'opcion_' + ${opcion.idOpcionVoto}" th:value="${opcionItem.id}"/>
+                        <span th:text="${opcionItem.opcion}"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" value="Enviar Voto"/>
+</form>
+
+<a th:href="@{/user/asamblea/detalles/{id}(id=${votacion.idAsamblea})}" class="btn btn-primary">Volver</a>
+
+</body>
+</html>

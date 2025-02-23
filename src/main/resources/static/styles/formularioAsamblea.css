@@ -1,0 +1,118 @@
+body{
+    margin: 0 auto;
+    position: relative;
+    font-family: 'Arial', sans-serif;
+    background: rgb(234, 232, 236);
+}
+form{
+    background: rgb(230, 227, 233);
+    text-align: center;
+    width:80%;
+    height: auto;
+    border: 3px solid rgb(182, 190, 216);
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    animation: mostrarFormulario 1s cubic-bezier(0.68, -0.55, 0.27, 1.5) forwards;
+}
+@keyframes mostrarFormulario {
+    0%{
+        transform: translate(50%, -500px);
+    }
+    50%{
+        transform: translate(50%, 45px);
+    }
+    100% {
+        transform: translate(50%, 70px);
+    }
+}
+h2{
+    text-align: start;
+    padding: 20px;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+h1{
+    color: white;
+    margin-top: 0;
+    text-align: center;
+    background: rgb(43, 46, 59);
+    width: 100%;
+    border-bottom: 3px solid rgb(105, 111, 133);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, 0%);
+}
+p{
+    margin-top: 0;
+    margin-left: 20px;
+    text-align: start;
+}
+button[type="button"]{
+    width: 7%;
+}
+button[type="submit"],
+button[type="button"] {
+    background: rgb(43, 46, 59);
+    color: aliceblue;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+button[type="submit"]:hover,
+button[type="button"]:hover {
+    background-color: #0c1825cc;
+}
+.FH{
+    display: flex;
+    flex-direction:column;
+    margin-top: 10px;
+    align-items: center;
+    width: 100%;
+}
+#estado{
+    width: 30%;
+    height: 30px;
+}
+label{
+    margin-bottom: 3px;
+    width: 30%;
+    text-align: start;
+}
+input{
+    width: 30%;
+    height: 30px;
+}
+textarea{
+    height: 25px;
+    width: 30%;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.btn-cancelar {
+    display: inline-block;
+    background: rgb(43, 46, 59);
+    color: aliceblue;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px; /* Ajusta el tamaño de la fuente según tus preferencias */
+}
+
+.btn-cancelar:hover {
+    background-color: #0c1825cc;
+}

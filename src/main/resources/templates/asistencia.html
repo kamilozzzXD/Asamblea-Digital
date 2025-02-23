@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/asistencia.css">
+</head>
+<body>
+
+<h2 class="center">Marcar Asistencia</h2>
+
+<form action="#" th:action="@{/admin/asambleas/asistencia/{id}(id=${asamblea.id})}" th:object="${asistenciaForm}" method="post">
+    <input type="hidden" th:field="*{idAsamblea}" th:value="${asamblea.id}" />
+
+    <table>
+        <thead>
+        <tr>
+            <th>Documento</th>
+            <th>Nombre</th>
+            <th>Asistencia</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.documento}"></td>
+            <td th:text="${usuario.nombre}"></td>
+            <td><input type="checkbox" th:field="*{asistenciaValues[__${usuario.id}__]}" /></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="center">
+        <button type="submit">Guardar Asistencia</button>
+        <a th:href="@{/admin/asamblea/detalles/{idAsamblea}(idAsamblea=${asamblea.id})}" class="button">Cancelar</a>
+    </div>
+</form>
+
+</body>
+</html>

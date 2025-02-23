@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responder FAQ</title>
+    <link rel="stylesheet" href="/styles/formularioResponderFAQ.css">
+</head>
+<body>
+<div class="container">
+    <h1>Responder Pregunta</h1>
+    <form th:action="@{/admin/FAQ/responder}" method="post" th:object="${faq}">
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{usuario}" th:value="${faq.usuario.id}"/>
+        <input type="hidden" th:field="*{pregunta}" th:value="${faq.pregunta}"/>
+        <div>
+            <label for="pregunta">Pregunta:</label>
+            <p th:text="${faq.pregunta}"></p>
+        </div>
+        <div>
+            <label for="respuesta">Respuesta:</label><br>
+            <textarea id="respuesta" name="respuesta" th:field="*{respuesta}" required></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Responder">
+        </div>
+    </form>
+</div>
+</body>
+</html>
